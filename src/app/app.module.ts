@@ -11,6 +11,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { ContestantComponent } from './contestant/contestant.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { FormsModule } from '@angular/forms';
     MatCardModule,
     MatButtonModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

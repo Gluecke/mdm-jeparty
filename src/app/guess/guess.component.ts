@@ -9,5 +9,6 @@ import { Component, Input } from '@angular/core';
 export class GuessComponent {
 
   @Input() contestant: Contestant | null = null;
+  @Input() showAnswers: boolean = false;
 
 }

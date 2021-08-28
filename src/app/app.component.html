@@ -4,11 +4,19 @@
 </mat-toolbar>
 
 <div class="content-wrapper">
-  <button (click)="newQuestion()" mat-button>
-    <mat-icon>autorenew</mat-icon>
-  </button>
+  <div class="container-wrapper">
+    <div class="container">
+      <button (click)="revealAnswers()" mat-button>
+        <mat-icon *ngIf="!showAnswers">visibility_off</mat-icon>
+        <mat-icon *ngIf="showAnswers">visibility</mat-icon>
+      </button>
+      <button (click)="newQuestion()" mat-button style="float: right">
+        <mat-icon>autorenew</mat-icon>
+      </button>
+    </div>
+  </div>
 
-  <!-- todo: allow guess input, style, save to firestore, handle events -->
+  <!-- todo: save to firestore, handle events -->
 
   <div class="container-wrapper">
     <div class="container">
@@ -18,7 +26,8 @@
 
   <div class="container-wrapper">
     <div class="container">
-      <app-guess *ngFor="let contestant of contestants" [contestant]="contestant"></app-guess>
+      <app-guess *ngFor="let contestant of contestants | async" [contestant]="contestant" [showAnswers]="showAnswers">
+      </app-guess>
     </div>
   </div>
 

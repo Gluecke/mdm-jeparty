@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Contestant } from './contestant/contestant';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,21 +10,30 @@ import { Contestant } from './contestant/contestant';
 })
 export class AppComponent {
   title = 'jeparty';
+  showAnswers: boolean = false;
 
-  contestants: Contestant[] = [
-    {
-      name: "Garrett",
-      guess: "what is hello"
-    }
-  ];
+  contestants: Observable<Contestant[]> =
+    this.store.collection('contestants').valueChanges({ idField: 'id' }) as Observable<Contestant[]>;
+
+  constructor(private store: AngularFirestore) { }
 
   newQuestion(): void {
-    this.contestants = [];
+    this.store.collection('contestants').get().toPromise().then(snapshot => {
+      snapshot.docs.forEach(c => {
+        c.ref.delete();
+      })
+    });
+
+    this.showAnswers = false;
   }
 
-  lockedIn( contestant: Contestant): void {
+  revealAnswers(): void {
+    this.showAnswers = !this.showAnswers;
+  }
+
+  lockedIn(contestant: Contestant): void {
     console.log(contestant);
 
-    this.contestants.push(contestant);
+    this.store.collection('contestants').add(contestant);
   }
 }

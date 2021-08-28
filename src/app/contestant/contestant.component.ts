@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Contestant } from './contestant';
 
 @Component({
@@ -13,7 +13,7 @@ export class ContestantComponent {
   hasLockedIn: boolean = false;
 
   lockIn(): void {
-    this.hasLockedIn = true;
+    // this.hasLockedIn = true;
     this.lockedInEvent.emit(this.contestant);
   }
 

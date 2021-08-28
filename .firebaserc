@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "mdm-jeparty": {
+      "hosting": {
+        "jeparty": [
+          "mdm-jeparty"
+        ]
+      }
+    }
+  }
+}
