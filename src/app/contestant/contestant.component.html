@@ -1,0 +1,21 @@
+<p>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput cdkFocusInitial autocomplete="off" [(ngModel)]="contestant.name" />
+    <mat-icon matSuffix>emoji_people</mat-icon>
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field>
+    <mat-label>Guess</mat-label>
+    <input matInput cdkFocusInitial autocomplete="off" [(ngModel)]="contestant.guess" />
+    <mat-icon matSuffix>question_answer</mat-icon>
+    <mat-hint>Only one answer</mat-hint>
+  </mat-form-field>
+  <span style="margin-left: 10px;">
+    <button mat-mini-fab collor="primary" aria-label="Submit answer" (click)="lockIn()" [disabled]="hasLockedIn">
+      <mat-icon *ngIf="!hasLockedIn">check_circle_outline</mat-icon>
+      <mat-icon *ngIf="hasLockedIn">lock</mat-icon>
+    </button>
+  </span>
+</p>
