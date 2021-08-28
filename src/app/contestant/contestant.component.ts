@@ -13,7 +13,7 @@ export class ContestantComponent {
   hasLockedIn: boolean = false;
 
   lockIn(): void {
-    // this.hasLockedIn = true;
+    this.hasLockedIn = true;
     this.lockedInEvent.emit(this.contestant);
   }
 

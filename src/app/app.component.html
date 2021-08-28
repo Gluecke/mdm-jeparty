@@ -16,16 +16,18 @@
     </div>
   </div>
 
-  <!-- todo: save to firestore, handle events -->
+  <!-- todo: lock answers, add realtime show, reset-->
 
   <div class="container-wrapper">
     <div class="container">
       <app-contestant (lockedInEvent)="lockedIn($event)"></app-contestant>
     </div>
   </div>
-
   <div class="container-wrapper">
+
     <div class="container">
+      <span style="display: flex; justify-content: center;">Answers</span>
+      <hr style="margin-bottom: 40px;" />
       <app-guess *ngFor="let contestant of contestants | async" [contestant]="contestant" [showAnswers]="showAnswers">
       </app-guess>
     </div>
