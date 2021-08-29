@@ -15,7 +15,7 @@ export class ContestantComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  lockIn(): void {
+  submit(): void {
     this.store.collection<Guess>('guesses').add({ contestant: this.contestant, showAnswer: false });
   }
 }
