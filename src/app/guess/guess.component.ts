@@ -1,5 +1,5 @@
-import { Contestant } from './../contestant/contestant';
 import { Component, Input } from '@angular/core';
+import { Guess } from './guess';
 
 @Component({
   selector: 'app-guess',
@@ -7,8 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./guess.component.css']
 })
 export class GuessComponent {
-
-  @Input() contestant: Contestant | null = null;
-  @Input() showAnswers: boolean = false;
-
+  @Input() guess: Guess | null = null;
 }

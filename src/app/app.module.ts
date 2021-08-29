@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MatTooltipModule,
     MatToolbarModule,
     MatIconModule,
     MatCardModule,

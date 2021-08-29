@@ -1,5 +1,5 @@
+import { Guess } from './guess/guess';
 import { Component } from '@angular/core';
-import { Contestant } from './contestant/contestant';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 
@@ -9,31 +9,34 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'jeparty';
   showAnswers: boolean = false;
-
-  contestants: Observable<Contestant[]> =
-    this.store.collection('contestants').valueChanges({ idField: 'id' }) as Observable<Contestant[]>;
+  title = 'jeparty';
+  guesses: Observable<Guess[]> = this.store.collection('guesses').valueChanges({ idField: 'id' }) as Observable<Guess[]>;
 
   constructor(private store: AngularFirestore) { }
 
   newQuestion(): void {
-    this.store.collection('contestants').get().toPromise().then(snapshot => {
-      snapshot.docs.forEach(c => {
-        c.ref.delete();
-      })
-    });
-
-    this.showAnswers = false;
+    this.store.collection<Guess>('guesses').get()
+      .toPromise()
+      .then(snapshot => {
+        snapshot.docs.forEach(g => {
+          g.ref.delete();
+        })
+      });
   }
 
   revealAnswers(): void {
+    this.store.collection<Guess>('guesses').get()
+      .toPromise()
+      .then(snapshot => {
+        snapshot.docs.forEach(g => {
+          const guess = g.data();
+          guess.showAnswer = !guess.showAnswer;
+
+          g.ref.update(guess);
+        })
+      });
+
     this.showAnswers = !this.showAnswers;
-  }
-
-  lockedIn(contestant: Contestant): void {
-    console.log(contestant);
-
-    this.store.collection('contestants').add(contestant);
   }
 }

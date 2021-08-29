@@ -1,4 +1,6 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Guess } from './../guess/guess';
+import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Contestant } from './contestant';
 
 @Component({
@@ -6,15 +8,14 @@ import { Contestant } from './contestant';
   templateUrl: './contestant.component.html',
   styleUrls: ['./contestant.component.css']
 })
-export class ContestantComponent {
-  @Output() lockedInEvent = new EventEmitter<Contestant>();
+export class ContestantComponent implements OnInit {
+  contestant: Contestant = { name: "", guess: "" };
 
-  contestant: Contestant = { name: "", guess: ""};
-  hasLockedIn: boolean = false;
+  constructor(private store: AngularFirestore) { }
+
+  ngOnInit(): void { }
 
   lockIn(): void {
-    this.hasLockedIn = true;
-    this.lockedInEvent.emit(this.contestant);
+    this.store.collection<Guess>('guesses').add({ contestant: this.contestant, showAnswer: false });
   }
-
 }

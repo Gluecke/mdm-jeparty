@@ -6,29 +6,30 @@
 <div class="content-wrapper">
   <div class="container-wrapper">
     <div class="container">
-      <button (click)="revealAnswers()" mat-button>
-        <mat-icon *ngIf="!showAnswers">visibility_off</mat-icon>
-        <mat-icon *ngIf="showAnswers">visibility</mat-icon>
-      </button>
-      <button (click)="newQuestion()" mat-button style="float: right">
-        <mat-icon>autorenew</mat-icon>
-      </button>
+      <span style="float: right">
+        Host Controls:
+        <button (click)="revealAnswers()" mat-raised-button matTooltip="Show/Hide answers">
+          <mat-icon *ngIf="!showAnswers">visibility_off</mat-icon>
+          <mat-icon *ngIf="showAnswers">visibility</mat-icon>
+        </button>
+        <button (click)="newQuestion()" mat-raised-button matTooltip="Reset">
+          <mat-icon>autorenew</mat-icon>
+        </button>
+      </span>
     </div>
   </div>
 
-  <!-- todo: lock answers, add realtime show, reset-->
-
   <div class="container-wrapper">
     <div class="container">
-      <app-contestant (lockedInEvent)="lockedIn($event)"></app-contestant>
+      <app-contestant></app-contestant>
     </div>
   </div>
   <div class="container-wrapper">
 
     <div class="container">
-      <span style="display: flex; justify-content: center;">Answers</span>
+      <span style="display: flex; justify-content: center;">Answers: {{(guesses | async)?.length}}</span>
       <hr style="margin-bottom: 40px;" />
-      <app-guess *ngFor="let contestant of contestants | async" [contestant]="contestant" [showAnswers]="showAnswers">
+      <app-guess *ngFor="let guess of guesses | async" [guess]="guess">
       </app-guess>
     </div>
   </div>
