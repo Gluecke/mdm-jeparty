@@ -1,28 +1,34 @@
-<app-header></app-header>
-<div class="x-content-wrapper">
-  <div class="x-content">
-    <div class="y-content-wrapper">
-      <div class="y-content">
-        <span>Host Controls: &nbsp;</span>
-        <button (click)="revealAnswers()" mat-raised-button matTooltip="Show/Hide answers">
-          <mat-icon *ngIf="!showAnswers">visibility_off</mat-icon>
-          <mat-icon *ngIf="showAnswers">visibility</mat-icon>
-        </button>
-        <button (click)="newQuestion()" mat-raised-button matTooltip="Reset">
-          <mat-icon>autorenew</mat-icon>
-        </button>
-        <div style="margin-top: 25px;">
-          <app-contestant></app-contestant>
+<div class="all-wrap">
+  <div class="page-wrap">
+    <app-header></app-header>
+    <div class="content">
+      <div class="x-content-wrapper">
+        <div class="x-content">
+          <div class="y-content-wrapper">
+            <div class="y-content">
+              <span>Host Controls: &nbsp;</span>
+              <button (click)="revealAnswers()" mat-raised-button matTooltip="Show/Hide answers">
+                <mat-icon *ngIf="!showAnswers">visibility_off</mat-icon>
+                <mat-icon *ngIf="showAnswers">visibility</mat-icon>
+              </button>
+              <button (click)="newQuestion()" mat-raised-button matTooltip="Reset">
+                <mat-icon>autorenew</mat-icon>
+              </button>
+              <div style="margin-top: 25px;">
+                <app-contestant></app-contestant>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="x-content">
+          <div class="y-content">
+            <span style="display: flex; justify-content: center;">Answers: {{(guesses | async)?.length}}</span>
+            <hr style="margin-bottom: 40px;" />
+            <app-guess *ngFor="let guess of guesses | async" [guess]="guess"></app-guess>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="x-content">
-    <div class="y-content">
-      <span style="display: flex; justify-content: center;">Answers: {{(guesses | async)?.length}}</span>
-      <hr style="margin-bottom: 40px;" />
-      <app-guess *ngFor="let guess of guesses | async" [guess]="guess"></app-guess>
-    </div>
+    <app-footer></app-footer>
   </div>
 </div>
-<app-footer></app-footer>
