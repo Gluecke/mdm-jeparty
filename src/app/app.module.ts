@@ -16,12 +16,15 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { FooterComponent } from './footer/footer.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     AppComponent,
     GuessComponent,
-    ContestantComponent
+    ContestantComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

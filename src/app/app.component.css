@@ -1,14 +1,23 @@
-.content-wrapper {
-  max-width: 1400px;
-  margin: auto;
-}
-
-.container-wrapper {
+.x-content-wrapper {
   display: flex;
-  justify-content: space-around;
+  margin-left: 25px;
+  margin-top: 25px;
+  margin-right: 25px;
+  /* margin: auto; */
 }
 
-.container {
-  width: 400px;
-  margin: 0 25px 25px 0;
+.x-content {
+  width: 100%;
+}
+
+.y-content-wrapper {
+  display: flex;
+  margin-right: 50px;
+  flex-direction: column;
+}
+
+.y-content {
+  min-height: 500px;
+  max-height: 500px;
+  overflow-y: auto;
 }
