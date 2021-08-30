@@ -1,3 +1,4 @@
+import { LocalStorageService } from './../services/local-storage.service';
 import { Guess } from './../guess/guess';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
@@ -11,11 +12,15 @@ import { Contestant } from './contestant';
 export class ContestantComponent implements OnInit {
   contestant: Contestant = { name: "", guess: "" };
 
-  constructor(private store: AngularFirestore) { }
+  constructor(private store: AngularFirestore, private lss: LocalStorageService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.contestant.name = (JSON.parse(this.lss.getData()) as Contestant)?.name;
+  }
 
   submit(): void {
     this.store.collection<Guess>('guesses').add({ contestant: this.contestant, showAnswer: false });
+
+    this.lss.setData(this.contestant);
   }
 }

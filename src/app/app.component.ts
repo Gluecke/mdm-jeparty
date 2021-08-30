@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
       }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.error("anonymous sign in error", error);
+        console.error(`anonymous sign in error ${errorCode} - ${errorMessage}`, error);
       });
   }
 
