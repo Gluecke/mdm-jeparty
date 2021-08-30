@@ -1,22 +1,24 @@
-<div class="contestant">
-  <p>
-    <mat-form-field>
-      <mat-label>Name</mat-label>
-      <input matInput cdkFocusInitial autocomplete="off" [(ngModel)]="contestant.name" />
-      <mat-icon matSuffix>emoji_people</mat-icon>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field>
-      <mat-label>Guess</mat-label>
-      <input matInput cdkFocusInitial autocomplete="off" [(ngModel)]="contestant.guess" />
-      <mat-icon matSuffix>question_answer</mat-icon>
-      <mat-hint>Only one answer</mat-hint>
-    </mat-form-field>
-  </p>
-  <span style="float: right">
-    <button mat-mini-fab collor="primary" aria-label="Submit answer" (click)="submit()">
-      <mat-icon>send</mat-icon>
-    </button>
-  </span>
-</div>
+<form (ngSubmit)="submit()">
+  <div class="contestant">
+    <p>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput cdkFocusInitial autocomplete="off" [(ngModel)]="contestant.name" name="name"/>
+        <mat-icon matSuffix>emoji_people</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <mat-label>Guess</mat-label>
+        <input matInput cdkFocusInitial autocomplete="off" [(ngModel)]="contestant.guess" name="guess"/>
+        <mat-icon matSuffix>question_answer</mat-icon>
+        <mat-hint>Only one answer</mat-hint>
+      </mat-form-field>
+    </p>
+    <span style="float: right">
+      <button mat-mini-fab collor="primary" aria-label="Submit answer">
+        <mat-icon>send</mat-icon>
+      </button>
+    </span>
+  </div>
+</form>
