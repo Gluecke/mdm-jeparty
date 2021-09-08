@@ -76,7 +76,7 @@ export class AppComponent implements OnInit {
 
   downloadAnswers(): void {
     let data: string = this.guesses.map(g =>
-      g.contestant.name + ',' + g.contestant.guess
+      g.contestant.name + ',' + (g.showAnswer ? g.contestant.guess : "********")
     ).join('\r\n');
 
     let dataBlob: Blob = new Blob([data], { type: 'text/csv' });

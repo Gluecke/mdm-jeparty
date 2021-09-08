@@ -1,22 +1,22 @@
-<form (ngSubmit)="submit()">
+<form (ngSubmit)="submit()" #form="ngForm">
   <div class="contestant">
     <p>
       <mat-form-field>
         <mat-label>Name</mat-label>
-        <input matInput cdkFocusInitial autocomplete="off" [(ngModel)]="contestant.name" name="name"/>
+        <input matInput cdkFocusInitial autocomplete="off" [(ngModel)]="contestant.name" name="name" required/>
         <mat-icon matSuffix>emoji_people</mat-icon>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
         <mat-label>Guess</mat-label>
-        <input matInput cdkFocusInitial autocomplete="off" [(ngModel)]="contestant.guess" name="guess"/>
+        <input matInput cdkFocusInitial autocomplete="off" [(ngModel)]="contestant.guess" name="guess" required/>
         <mat-icon matSuffix>question_answer</mat-icon>
         <mat-hint>Only one answer</mat-hint>
       </mat-form-field>
     </p>
     <span style="float: right">
-      <button mat-mini-fab collor="primary" aria-label="Submit answer">
+      <button mat-mini-fab collor="primary" aria-label="Submit answer" [disabled]="!form.valid">
         <mat-icon>send</mat-icon>
       </button>
     </span>
