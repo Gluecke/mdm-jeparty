@@ -6,11 +6,11 @@
         <div class="y-content-wrapper">
           <div class="y-content">
             <span>Host Controls: &nbsp;</span>
-            <button (click)="revealAnswers()" mat-raised-button matTooltip="Show/Hide answers">
+            <button color="warn" (click)="revealAnswers()" mat-raised-button matTooltip="Show/Hide answers">
               <mat-icon *ngIf="!(showAnswers | async)?.show">visibility_off</mat-icon>
               <mat-icon *ngIf="(showAnswers | async)?.show">visibility</mat-icon>
             </button>
-            <button (click)="newQuestion()" mat-raised-button matTooltip="Reset">
+            <button color="warn" style="margin-left: 10px" (click)="newQuestion()" mat-raised-button matTooltip="Reset">
               <mat-icon>autorenew</mat-icon>
             </button>
             <div style="margin-top: 25px;">
@@ -21,10 +21,15 @@
       </div>
       <div class="x-content">
         <div class="y-content">
-          <span style="display: flex; justify-content: center;">Answers: {{(guesses | async)?.length}}</span>
+          <span style="display: flex; justify-content: center;">Answers: {{guesses?.length}}
+          </span>
           <hr style="margin-bottom: 40px;" />
-          <app-guess *ngFor="let guess of guesses | async" [guess]="guess"></app-guess>
+          <app-guess *ngFor="let guess of guesses" [guess]="guess"></app-guess>
         </div>
+        <button color="accent" style="font-size: 25px; line-height: 9px; width: 100%; min-height: auto;"
+          (click)="downloadAnswers()" mat-raised-button matTooltip="Download Answers">
+          <mat-icon style="font-size: inherit">file_download</mat-icon>
+        </button>
       </div>
     </div>
   </div>

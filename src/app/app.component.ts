@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { getAuth, signInAnonymously } from "firebase/auth";
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ import { getAuth, signInAnonymously } from "firebase/auth";
 export class AppComponent implements OnInit {
   showAnswers: Observable<ShowAnswers> = this.store.doc('showAnswers/1').valueChanges({ idField: 'id' }) as unknown as Observable<ShowAnswers>;
   title = 'jeparty';
-  guesses: Observable<Guess[]> = this.store.collection('guesses').valueChanges({ idField: 'id' }) as Observable<Guess[]>;
+  guesses: Guess[] = [];
 
   constructor(private store: AngularFirestore) { }
 
@@ -25,6 +26,11 @@ export class AppComponent implements OnInit {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error(`anonymous sign in error ${errorCode} - ${errorMessage}`, error);
+      });
+
+    (this.store.collection('guesses').valueChanges({ idField: 'id' }) as Observable<Guess[]>)
+      .subscribe(l => {
+        this.guesses = l;
       });
 
     this.store.doc<ShowAnswers>('showAnswers/1').get()
@@ -66,6 +72,15 @@ export class AppComponent implements OnInit {
             })
           });
       });
+  }
+
+  downloadAnswers(): void {
+    let data: string = this.guesses.map(g =>
+      g.contestant.name + ',' + g.contestant.guess
+    ).join('\r\n');
+
+    let dataBlob: Blob = new Blob([data], { type: 'text/csv' });
+    saveAs(dataBlob, 'answers.csv');
   }
 }
 

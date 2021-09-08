@@ -26,6 +26,8 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@types/file-saver": "^2.0.3",
+    "file-saver": "^2.0.5",
     "firebase": "^9.0.0",
     "rxfire": "^6.0.0",
     "rxjs": "~6.6.0",
