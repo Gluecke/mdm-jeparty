@@ -10,7 +10,7 @@ import { getAuth, signInAnonymously } from "firebase/auth";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  showAnswers: boolean = false;
+  showAnswers: Observable<ShowAnswers> = this.store.doc('showAnswers/1').valueChanges({ idField: 'id' }) as unknown as Observable<ShowAnswers>;
   title = 'jeparty';
   guesses: Observable<Guess[]> = this.store.collection('guesses').valueChanges({ idField: 'id' }) as Observable<Guess[]>;
 
@@ -26,6 +26,15 @@ export class AppComponent implements OnInit {
         const errorMessage = error.message;
         console.error(`anonymous sign in error ${errorCode} - ${errorMessage}`, error);
       });
+
+    this.store.doc<ShowAnswers>('showAnswers/1').get()
+      .toPromise()
+      .then(sn => {
+        if (!sn.exists) {
+          this.store.collection('showAnswers').doc("1").set({ show: false });
+        }
+      });
+
   }
 
   newQuestion(): void {
@@ -39,21 +48,28 @@ export class AppComponent implements OnInit {
   }
 
   revealAnswers(): void {
-    this.store.collection<Guess>('guesses').get()
+
+    this.store.doc<ShowAnswers>('showAnswers/1').get()
       .toPromise()
-      .then(snapshot => {
-        snapshot.docs.forEach(g => {
-          const guess = g.data();
-          guess.showAnswer = !guess.showAnswer;
+      .then(sn => {
+        let toShow = !sn.data()?.show;
+        sn.ref.update({ show: toShow });
 
-          g.ref.update(guess);
-        })
+        this.store.collection<Guess>('guesses').get()
+          .toPromise()
+          .then(snapshot => {
+            snapshot.docs.forEach(g => {
+              const guess = g.data();
+              guess.showAnswer = toShow;
+
+              g.ref.update(guess);
+            })
+          });
       });
-
-    this.showAnswers = !this.showAnswers;
   }
+}
 
-
-
-
+export interface ShowAnswers {
+  id?: string;
+  show: boolean;
 }
