@@ -1,4 +1,4 @@
-<mat-card class="guess" *ngIf="guess">
+<mat-card class="guess guess-highlight" *ngIf="guess">
   <mat-card-title>{{guess.contestant.name}}</mat-card-title>
   <span *ngIf="guess.showAnswer">{{guess.contestant.guess}}</span>
 </mat-card>

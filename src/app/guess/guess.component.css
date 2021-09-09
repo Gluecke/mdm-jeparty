@@ -3,6 +3,19 @@
   margin-bottom: 5px;
 }
 
+.guess-highlight {
+  animation: splash .5s linear;
+}
+
 .guess mat-card-title {
   font-size: medium;
+}
+
+@keyframes splash {
+  0% {
+    background-color: #ff4081;
+  }
+  100% {
+    background-color: transparent;
+  }
 }

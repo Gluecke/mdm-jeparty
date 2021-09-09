@@ -5,6 +5,7 @@ import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { getAuth, signInAnonymously } from "firebase/auth";
 import { saveAs } from 'file-saver';
+import { isEqual } from "lodash";
 
 @Component({
   selector: 'app-root',
@@ -34,7 +35,28 @@ export class AppComponent implements OnInit, OnDestroy {
     (this.store.collection('guesses').valueChanges({ idField: 'id' }) as Observable<Guess[]>)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(l => {
-        this.guesses = l;
+        let toRemove: (string | undefined)[] = [];
+
+        this.guesses.map(g => {
+          if (!l.find(lg => lg.id === g.id)) {
+            toRemove.push(g.id);
+          }
+        });
+
+        toRemove.forEach(r => {
+          let idx = this.guesses.findIndex(g => r === g.id);
+          this.guesses.splice(idx, 1);
+        });
+
+        l.forEach(lg => {
+          let existingGuess = this.guesses.find(fg => fg.id === lg.id);
+          if (!existingGuess) {
+            this.guesses.push(lg);
+          } else if (!isEqual(existingGuess, lg)) {
+            let existingIndex = this.guesses.findIndex(eg => eg.id === lg.id)
+            this.guesses[existingIndex] = lg;
+          }
+        });
       });
 
     this.store.doc<GuessVisibility>('guessVisibility/1').get()
