@@ -19,7 +19,7 @@ export class ContestantComponent implements OnInit {
   }
 
   submit(): void {
-    this.store.collection<Guess>('guesses').add({ contestant: this.contestant, showAnswer: false, highlight: true });
+    this.store.collection<Guess>('guesses').add({ contestant: this.contestant, showAnswer: false });
 
     this.lss.setData(this.contestant);
   }
