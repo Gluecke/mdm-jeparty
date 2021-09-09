@@ -6,9 +6,9 @@
         <div class="y-content-wrapper">
           <div class="y-content">
             <span>Host Controls: &nbsp;</span>
-            <button color="warn" (click)="revealAnswers()" mat-raised-button matTooltip="Show/Hide answers">
-              <mat-icon *ngIf="!(showAnswers | async)?.show">visibility_off</mat-icon>
-              <mat-icon *ngIf="(showAnswers | async)?.show">visibility</mat-icon>
+            <button color="warn" (click)="toggleGuessVisibility()" mat-raised-button matTooltip="Show/Hide answers">
+              <mat-icon *ngIf="!(guessVisibility | async)?.show">visibility_off</mat-icon>
+              <mat-icon *ngIf="(guessVisibility | async)?.show">visibility</mat-icon>
             </button>
             <button color="warn" style="margin-left: 10px" (click)="newQuestion()" mat-raised-button matTooltip="Reset">
               <mat-icon>autorenew</mat-icon>

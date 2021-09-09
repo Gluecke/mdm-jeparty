@@ -1,7 +1,8 @@
 import { Guess } from './guess/guess';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { getAuth, signInAnonymously } from "firebase/auth";
 import { saveAs } from 'file-saver';
 
@@ -10,10 +11,12 @@ import { saveAs } from 'file-saver';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  showAnswers: Observable<ShowAnswers> = this.store.doc('showAnswers/1').valueChanges({ idField: 'id' }) as unknown as Observable<ShowAnswers>;
+export class AppComponent implements OnInit, OnDestroy {
   title = 'jeparty';
   guesses: Guess[] = [];
+  ngUnsubscribe = new Subject();
+  guessVisibility: Observable<GuessVisibility> = (this.store.doc('guessVisibility/1')
+    .valueChanges({ idField: 'id' }) as unknown as Observable<GuessVisibility>);
 
   constructor(private store: AngularFirestore) { }
 
@@ -29,18 +32,24 @@ export class AppComponent implements OnInit {
       });
 
     (this.store.collection('guesses').valueChanges({ idField: 'id' }) as Observable<Guess[]>)
+      .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(l => {
         this.guesses = l;
       });
 
-    this.store.doc<ShowAnswers>('showAnswers/1').get()
+    this.store.doc<GuessVisibility>('guessVisibility/1').get()
       .toPromise()
       .then(sn => {
         if (!sn.exists) {
-          this.store.collection('showAnswers').doc("1").set({ show: false });
+          this.store.collection('guessVisibility').doc("1").set({ show: false });
         }
       });
+  }
 
+  ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+    console.log("destroyed");
   }
 
   newQuestion(): void {
@@ -49,16 +58,16 @@ export class AppComponent implements OnInit {
       .then(snapshot => {
         snapshot.docs.forEach(g => {
           g.ref.delete();
-        })
+        });
+        this.toggleGuessVisibility(false);
       });
   }
 
-  revealAnswers(): void {
-
-    this.store.doc<ShowAnswers>('showAnswers/1').get()
+  toggleGuessVisibility(show?: boolean): void {
+    this.store.doc<GuessVisibility>('guessVisibility/1').get()
       .toPromise()
       .then(sn => {
-        let toShow = !sn.data()?.show;
+        let toShow = show ?? !sn.data()?.show;
         sn.ref.update({ show: toShow });
 
         this.store.collection<Guess>('guesses').get()
@@ -75,16 +84,15 @@ export class AppComponent implements OnInit {
   }
 
   downloadAnswers(): void {
-    let data: string = this.guesses.map(g =>
-      g.contestant.name + ',' + (g.showAnswer ? g.contestant.guess : "********")
-    ).join('\r\n');
+    let data: string = this.guesses.map(g => g.contestant.name + ',' + (g.showAnswer ? g.contestant.guess : "********"))
+      .join('\r\n');
 
     let dataBlob: Blob = new Blob([data], { type: 'text/csv' });
     saveAs(dataBlob, 'answers.csv');
   }
 }
 
-export interface ShowAnswers {
+export interface GuessVisibility {
   id?: string;
   show: boolean;
 }
