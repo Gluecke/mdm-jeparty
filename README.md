@@ -31,6 +31,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice.
 
 ### CD pipeline
 Depoyment via [Github actions](https://github.com/Gluecke/mdm-jeparty/actions)
+Only [published releases](https://github.com/Gluecke/mdm-jeparty/releases) trigger deployment
 
 ### Manual deployment
 Run `ng deploy` to deploy the app to firebase
