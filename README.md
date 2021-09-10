@@ -2,8 +2,6 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0. 
 
-See the [Live](https://mdm-jeparty.web.app/) app
-
 ## Setup
 
 Install angular [CLI](https://angular.io/cli)
@@ -32,7 +30,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice.
 ## Deploy
 
 ### CD pipeline
-Depoyment via (Github actions)[https://github.com/Gluecke/mdm-jeparty/actions]
+Depoyment via [Github actions](https://github.com/Gluecke/mdm-jeparty/actions)
 
 ### Manual deployment
 Run `ng deploy` to deploy the app to firebase
