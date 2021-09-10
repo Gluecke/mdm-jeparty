@@ -31,6 +31,7 @@ jobs:
       - run: npm run build
       - uses: w9jds/firebase-action@master
         with:
-          args: deploy --project mdm-jeparty --only hosting
+          args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_ID: mdm-jeparty
