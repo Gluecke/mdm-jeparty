@@ -1,15 +1,24 @@
 # Jeparty
 
+Jeopardy question/answer app.  
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0. 
 
 ## Setup
 
-Install angular [CLI](https://angular.io/cli)
-run `npm install`
+Install [node.js and npm](https://nodejs.org/en/)  
+Run `npm install -g @angular/cli` to install angular [CLI](https://angular.io/cli)  
+Run `npm install -g firebase-tools` to install firebase-tools [CLI](https://firebase.google.com/docs/cli#setup_update_cli)  
+Run `npm install` to install dependencies.
 
 ## Development server
+### Running local firebase emulators
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `firebase emulators:start`. This will start emulators as defined in firebase.json files. Edit environment.ts `useEmulator` field to desired value. Navigate to `http://localhost:4000/` to see emulator UI.
+
+### Starting App
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.  
+Debugging with vscode is configured in the `.vscode/launch.json` file. Launch app from vscode to add breakpoints.
 
 ## Code scaffolding
 
@@ -28,11 +37,12 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice.
 
 ## Deploy
-
 ### CD pipeline
+
 Depoyment via [Github actions](https://github.com/Gluecke/mdm-jeparty/actions). Only [published releases](https://github.com/Gluecke/mdm-jeparty/releases) trigger deployment
 
 ### Manual deployment
+
 Run `ng deploy` to deploy the app to firebase
 
 ## Further help
