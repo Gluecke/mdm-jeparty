@@ -8,17 +8,18 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Install [node.js and npm](https://nodejs.org/en/)  
 Run `npm install -g @angular/cli` to install angular [CLI](https://angular.io/cli)  
 Run `npm install -g firebase-tools` to install firebase-tools [CLI](https://firebase.google.com/docs/cli#setup_update_cli)  
-Run `npm install` to install dependencies.
+Run `npm install` to install [dependencies](./package.json).
 
 ## Development server
 ### Running local firebase emulators
 
-Run `firebase emulators:start`. This will start emulators as defined in firebase.json files. Edit environment.ts `useEmulator` field to desired value. Navigate to `http://localhost:4000/` to see emulator UI.
+Run `firebase emulators:start`. Navigate to `http://localhost:4000/` to see emulator UI.
+> Firebase emulators allow for local testing. Their configurations are defined in [firebase.json](./firebase.json). Edit [environment.ts](./src/environments/environment.ts) `useEmulator` field to toggle between firebase emulators and firebase live.
 
 ### Starting App
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.  
-Debugging with vscode is configured in the `.vscode/launch.json` file. Launch app from vscode to add breakpoints.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+> Debugging with vscode is configured in the [.vscode/launch.json](./.vscode/launch.json) file. Launch app from vscode to add breakpoints.
 
 ## Code scaffolding
 
