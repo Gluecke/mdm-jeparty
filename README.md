@@ -14,7 +14,7 @@ Run `npm install` to install [dependencies](./package.json).
 ### Running local firebase emulators
 
 Run `firebase emulators:start`. Navigate to `http://localhost:4000/` to see emulator UI.
-> Firebase emulators allow for local testing. Their configurations are defined in [firebase.json](./firebase.json). Edit [environment.ts](./src/environments/environment.ts) `useEmulator` field to toggle between firebase emulators and firebase live.
+> Firebase emulators allow for local testing. The configurations are defined in [firebase.json](./firebase.json). Edit [environment.ts](./src/environments/environment.ts) `useEmulator` field to toggle between firebase emulators and firebase live.
 
 ### Starting App
 
