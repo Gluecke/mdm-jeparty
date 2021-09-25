@@ -34,7 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
     (this.store.collection('guesses').valueChanges({ idField: 'id' }) as Observable<Guess[]>)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(l => {
-        this.guesses = l;
+        this.guesses = l.sort((a: Guess, b: Guess) => a.dateSubmitted.toDate().getTime() - b.dateSubmitted.toDate().getTime());
       });
 
     this.store.doc<GuessVisibility>('guessVisibility/1').get()

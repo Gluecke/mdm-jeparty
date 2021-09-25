@@ -3,6 +3,7 @@ import { Guess } from './../guess/guess';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Contestant } from './contestant';
+import { Timestamp } from 'firebase/firestore';
 
 @Component({
   selector: 'app-contestant',
@@ -19,7 +20,7 @@ export class ContestantComponent implements OnInit {
   }
 
   submit(): void {
-    this.store.collection<Guess>('guesses').add({ contestant: this.contestant, showAnswer: false });
+    this.store.collection<Guess>('guesses').add({ contestant: this.contestant, showAnswer: false, dateSubmitted: Timestamp.fromDate(new Date()) });
 
     this.lss.setData(this.contestant);
   }
