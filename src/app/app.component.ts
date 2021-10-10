@@ -31,7 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
         console.error(`anonymous sign in error ${errorCode} - ${errorMessage}`, error);
       });
 
-    (this.store.collection('guesses').valueChanges({ idField: 'id' }) as Observable<Guess[]>)
+    (this.store.collection('guesses').valueChanges() as Observable<Guess[]>)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(l => {
         this.guesses = l.sort((a: Guess, b: Guess) => a.dateSubmitted.toDate().getTime() - b.dateSubmitted.toDate().getTime());

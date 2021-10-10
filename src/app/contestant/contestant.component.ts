@@ -20,7 +20,11 @@ export class ContestantComponent implements OnInit {
   }
 
   submit(): void {
-    this.store.collection<Guess>('guesses').add({ contestant: this.contestant, showAnswer: false, dateSubmitted: Timestamp.fromDate(new Date()) });
+    this.store.collection<Guess>('guesses').doc(this.contestant.name).set({
+      contestant: this.contestant,
+      showAnswer: false,
+      dateSubmitted: Timestamp.fromDate(new Date())
+    });
 
     this.lss.setData(this.contestant);
   }
