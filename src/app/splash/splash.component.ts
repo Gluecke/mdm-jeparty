@@ -11,7 +11,7 @@ export class SplashComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    let endOfHalloween = new Date("2021-11-01T00:00:00");
+    let endOfHalloween = new Date("2021-12-01T00:00:00");
     let today = new Date();
 
     if (today >= endOfHalloween) {
@@ -22,6 +22,6 @@ export class SplashComponent implements OnInit {
 
     setTimeout(() => {
       this.showSplash = false;
-    }, 2800);
+    }, 6800);
   }
 }
