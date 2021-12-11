@@ -1,6 +1,6 @@
 # Jeparty
 
-Jeopardy question/answer app.  
+Jeopardy question & answer app.  
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0. 
 
 ## Setup
