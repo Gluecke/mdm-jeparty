@@ -12,31 +12,15 @@ export class SplashComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    let newYears = new Date("2022-01-01T00:00:00");
+    let expire = new Date("2022-02-01T00:00:00");
     let today = new Date();
 
-    if (today >= newYears) {
+    if (today >= expire) {
       this.showSplash = false;
     } else {
       this.showSplash = true;
 
-      let randInt = this.getRandomFromRange(1, 5);
-
-      let selectedImage: string;
-
-      if (randInt === 1) {
-        selectedImage = "charlie-tree-xmas";
-      } else if (randInt === 2) {
-        selectedImage = "hanukkah-party";
-      } else if (randInt === 3) {
-        selectedImage = "kwanzaa-candle";
-      } else if (randInt === 4) {
-        selectedImage = "linus-tree-xmas";
-      } else {
-        selectedImage = "peanuts-happy-new-year";
-      }
-
-      this.selectedImagePath = `/assets/images/${selectedImage}.gif`;
+      this.selectedImagePath = `/assets/images/hamm-blues.gif`;
     }
 
     setTimeout(() => {
