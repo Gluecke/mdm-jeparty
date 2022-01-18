@@ -5,8 +5,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Setup
 
+### Install node
 Using [nvm for windows](https://github.com/coreybutler/nvm-windows)  
+#### or
 Manual Install [node.js and npm](https://nodejs.org/en/)  
+
+### Install node modules
 Run `npm install -g @angular/cli` to install angular [CLI](https://angular.io/cli)  
 Run `npm install -g firebase-tools` to install firebase-tools [CLI](https://firebase.google.com/docs/cli#setup_update_cli)  
 Run `npm install` to install [dependencies](./package.json).
