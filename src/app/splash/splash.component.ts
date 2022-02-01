@@ -12,7 +12,7 @@ export class SplashComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    let expire = new Date("2022-02-01T00:00:00");
+    let expire = new Date("2022-03-01T00:00:00");
     let today = new Date();
 
     if (today >= expire) {
@@ -20,12 +20,12 @@ export class SplashComponent implements OnInit {
     } else {
       this.showSplash = true;
 
-      this.selectedImagePath = `/assets/images/hamm-blues.gif`;
+      this.selectedImagePath = `/assets/images/ned-gh-day.gif`;
     }
 
     setTimeout(() => {
       this.showSplash = false;
-    }, 3400);
+    }, 4400);
   }
 
   getRandomFromRange(min: number, max: number): number {
