@@ -12,7 +12,7 @@ export class SplashComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    let expire = new Date("2022-04-01T00:00:00");
+    let expire = new Date("2022-04-05T00:00:00");
     let today = new Date();
 
     if (today >= expire) {
@@ -20,7 +20,7 @@ export class SplashComponent implements OnInit {
     } else {
       this.showSplash = true;
 
-      this.selectedImagePath = `/assets/images/beach.gif`;
+      this.selectedImagePath = `/assets/images/hack.gif`;
     }
 
     setTimeout(() => {
