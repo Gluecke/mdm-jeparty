@@ -20,7 +20,13 @@ export class SplashComponent implements OnInit {
     } else {
       this.showSplash = true;
 
-      this.selectedImagePath = `/assets/images/mime-wall.gif`;
+      let openingDay = new Date("2022-04-07T00:00:00");
+      let closingDay = new Date("2022-04-08T00:00:00");
+      if (today >= openingDay && today < closingDay) {
+        this.selectedImagePath = `/assets/images/naked-gun.gif`;
+      } else {
+        this.selectedImagePath = `/assets/images/mime-wall.gif`;
+      }
     }
 
     setTimeout(() => {
