@@ -21,15 +21,15 @@ export class SplashComponent implements OnInit {
       this.showSplash = true;
 
       let startOfMay = new Date("2022-05-01T00:00:00");
+      let mayFourth = new Date("2022-05-04T00:00:00");
       let mayFifth = new Date("2022-05-05T00:00:00");
       let maySixth = new Date("2022-05-06T00:00:00");
-      let maySeventh = new Date("2022-05-07T00:00:00");
-      if (today >= startOfMay && today < mayFifth) {
+      if (today >= startOfMay && today < mayFourth) {
         this.selectedImagePath = `/assets/images/trebek-dance.gif`;
+      } else if(today >= mayFourth && today < mayFifth) {
+        this.selectedImagePath = `/assets/images/ewok.gif`;
       } else if(today >= mayFifth && today < maySixth) {
-        this.selectedImagePath = `/assets/images/trebek-dance.gif`;
-      } else if(today >= maySixth && today < maySeventh) {
-        this.selectedImagePath = `/assets/images/trebek-dance.gif`;
+        this.selectedImagePath = `/assets/images/vader-dance.gif`;
       } else {
         this.selectedImagePath = `/assets/images/trebek-dance.gif`;
       }
