@@ -28,7 +28,7 @@ export class SplashComponent implements OnInit {
 
     setTimeout(() => {
       this.showSplash = false;
-    }, 9000);
+    }, 9500);
   }
 
   getRandomFromRange(min: number, max: number): number {
