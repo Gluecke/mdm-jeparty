@@ -12,7 +12,7 @@ export class SplashComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    let expire = new Date("2022-06-01T00:00:00");
+    let expire = new Date("2022-07-01T00:00:00");
     let today = new Date();
 
     if (today >= expire) {
@@ -20,24 +20,15 @@ export class SplashComponent implements OnInit {
     } else {
       this.showSplash = true;
 
-      let startOfMay = new Date("2022-05-01T00:00:00");
-      let mayFourth = new Date("2022-05-04T00:00:00");
-      let mayFifth = new Date("2022-05-05T00:00:00");
-      let maySixth = new Date("2022-05-06T00:00:00");
-      if (today >= startOfMay && today < mayFourth) {
-        this.selectedImagePath = `/assets/images/trebek-dance.gif`;
-      } else if(today >= mayFourth && today < mayFifth) {
-        this.selectedImagePath = `/assets/images/ewok.gif`;
-      } else if(today >= mayFifth && today < maySixth) {
-        this.selectedImagePath = `/assets/images/vader-dance.gif`;
-      } else {
-        this.selectedImagePath = `/assets/images/trebek-dance.gif`;
+      let startOfJune = new Date("2022-06-01T00:00:00");
+      if (today >= startOfJune) {
+        this.selectedImagePath = `/assets/images/hello-there-obi-wan-kenobi.gif`;
       }
     }
 
     setTimeout(() => {
       this.showSplash = false;
-    }, 5000);
+    }, 9000);
   }
 
   getRandomFromRange(min: number, max: number): number {
