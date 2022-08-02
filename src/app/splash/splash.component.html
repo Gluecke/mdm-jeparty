@@ -1,7 +1,7 @@
 <div class="splash" *ngIf="showSplash">
   <img *ngIf="showGif" src={{selectedImagePath}} />
-  <video *ngIf="showVideo" controls autoplay loop>
-    <source src="{{selectedVideoPath}}" type="video/mp4"/>
+  <video *ngIf="showVideo" controls loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true">
+    <source src="{{selectedVideoPath}}" type="video/mp4" />
     Browser not supported
   </video>
 </div>

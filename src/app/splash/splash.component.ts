@@ -12,6 +12,7 @@ export class SplashComponent implements OnInit {
   selectedImagePath?: string;
   selectedVideoPath?: string;
 
+
   constructor() { }
 
   ngOnInit(): void {
@@ -40,4 +41,5 @@ export class SplashComponent implements OnInit {
   getRandomFromRange(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
+
 }
