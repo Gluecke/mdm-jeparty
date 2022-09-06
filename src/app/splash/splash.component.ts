@@ -16,10 +16,10 @@ export class SplashComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    let expire = new Date("2022-09-01T00:00:00");
+    let expire = new Date("2022-10-01T00:00:00");
     let today = new Date();
-    this.showGif = false;
-    this.showVideo = true;
+    this.showGif = true;
+    this.showVideo = false;
 
     if (today >= expire) {
       this.showSplash = false;
@@ -28,7 +28,7 @@ export class SplashComponent implements OnInit {
 
       let startShowingSplash = new Date("2022-08-01T00:00:00");
       if (today >= startShowingSplash) {
-        this.selectedImagePath = `/assets/images/dancer.gif`;
+        this.selectedImagePath = `/assets/images/sept-22.gif`;
         this.selectedVideoPath = `/assets/video/ShortHit.mp4`;
       }
     }
