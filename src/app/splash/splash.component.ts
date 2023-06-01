@@ -16,7 +16,7 @@ export class SplashComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    let expire = new Date("2023-06-01T00:00:00");
+    let expire = new Date("2023-07-01T00:00:00");
     let today = new Date();
     this.showGif = true;
     this.showVideo = false;
@@ -28,8 +28,14 @@ export class SplashComponent implements OnInit {
 
       let startShowingSplash = new Date("2022-08-01T00:00:00");
       if (today >= startShowingSplash) {
-        let paths: string[] = ['gonna-be-may.gif'];
-        let selectedIndex = this.getRandomFromRange(0, 0);
+        let paths: string[] = ['ant-dance-2.gif',
+          'ant-man-dance.gif',
+          'drey-dance.gif',
+          'fallon-dance.gif',
+          'holland-dance.gif',
+          'leon-dance.gif',
+          'trebek-dance-2023.gif'];
+        let selectedIndex = this.getRandomFromRange(0, 6);
         this.selectedImagePath = `/assets/images/${paths[selectedIndex]}`;
 
         // this.selectedVideoPath = `/assets/video/ShortHit.mp4`;
