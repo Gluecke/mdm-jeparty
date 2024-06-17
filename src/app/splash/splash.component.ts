@@ -16,7 +16,7 @@ export class SplashComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    let expire = new Date("2024-05-05T00:00:00");
+    let expire = new Date("2024-07-05T00:00:00");
     let today = new Date();
     this.showGif = true;
     this.showVideo = false;
