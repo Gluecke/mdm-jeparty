@@ -33,7 +33,7 @@ export class SplashComponent implements OnInit {
         // return "t-" + i + ".gif";
         // });
 
-        let paths: string[] = ['oprah-pollen.gif'];
+        let paths: string[] = ['going-down.webp', 'price-is-hype.webp'];
         let selectedIndex = this.getRandomFromRange(0, paths.length - 1);
         if (paths[selectedIndex].includes("gif") || paths[selectedIndex].includes("webp")) {
           this.selectedImagePath = `/assets/images/${paths[selectedIndex]}`;
