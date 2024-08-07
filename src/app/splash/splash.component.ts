@@ -16,7 +16,7 @@ export class SplashComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    let expire = new Date("2024-09-05T00:00:00");
+    let expire = new Date("2024-09-15T00:00:00");
     let today = new Date();
     this.showGif = true;
     this.showVideo = false;
@@ -33,7 +33,7 @@ export class SplashComponent implements OnInit {
         // return "t-" + i + ".gif";
         // });
 
-        let paths: string[] = ['uneven-bars-swing.gif', 'snoop-torch.jpg', 'shots-fired.jpg', 'backflipsfordays.gif', 'byatoe.gif', 'loading-spin.gif', 'pure-gold.webp', 'realarcherpls.webp', 'spiderwoman.gif', 'upup.gif', 'hoverboard.jpeg'];
+        let paths: string[] = ['uneven-bars-swing.gif', 'snoop-torch.jpg', 'shots-fired.jpg', 'backflipsfordays.gif', 'byatoe.gif', 'loading-spin.gif', 'pure-gold.webp', 'realarcherpls.webp', 'spiderwoman.gif', 'upup.gif', 'hoverboard.jpeg', 'snoop-wow.webp', 'suni-hist.gif'];
         let selectedIndex = this.getRandomFromRange(0, paths.length - 1);
         if (paths[selectedIndex].includes("gif") || paths[selectedIndex].includes("webp") || paths[selectedIndex].includes("jpg") || paths[selectedIndex].includes("jpeg")) {
           this.selectedImagePath = `/assets/images/${paths[selectedIndex]}`;
@@ -49,7 +49,7 @@ export class SplashComponent implements OnInit {
 
     setTimeout(() => {
       this.showSplash = false;
-    }, 8000);
+    }, 11000);
   }
 
   getRandomFromRange(min: number, max: number): number {

@@ -1,6 +1,6 @@
 {
   "name": "jeparty",
-  "version": "1.42.3",
+  "version": "1.42.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
