@@ -22,7 +22,7 @@
       </div>
       <div class="x-content">
         <div class="y-content">
-          <span style="display: flex; justify-content: center;">Answers: {{guesses?.length}}
+          <span style="display: flex; justify-content: center;">Answers: {{guesses.length}}
           </span>
           <hr style="margin-bottom: 40px;" />
           <app-guess *ngFor="let guess of guesses" [guess]="guess"></app-guess>

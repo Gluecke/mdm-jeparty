@@ -43,6 +43,7 @@ yarn-error.log
 testem.log
 /typings
 *.log
+/.angular
 
 # System Files
 .DS_Store
