@@ -1,9 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-splash',
   templateUrl: './splash.component.html',
-  styleUrls: ['./splash.component.css']
+  styleUrls: ['./splash.component.css'],
+  imports: [CommonModule]
 })
 export class SplashComponent implements OnInit {
   showSplash?: Boolean;

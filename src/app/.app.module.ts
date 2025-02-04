@@ -19,15 +19,10 @@ import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './header/header.component';
 import { SplashComponent } from './splash/splash.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    GuessComponent,
-    ContestantComponent,
-    FooterComponent,
-    HeaderComponent,
-    SplashComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +37,7 @@ import { SplashComponent } from './splash/splash.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [{
     provide: SETTINGS,
@@ -51,6 +46,6 @@ import { SplashComponent } from './splash/splash.component';
       ssl: false
     } : undefined
   }],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule { }
