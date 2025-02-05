@@ -12,7 +12,7 @@
 
 #firebase
 /.firebase
-/src/environments/environment.ts
+/src/environments/.environment.ts
 
 # profiling files
 chrome-profiler-events*.json
