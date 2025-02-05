@@ -1,0 +1,12 @@
+<div style="width: 100%; text-align: center;">
+  <div>
+    <mat-form-field style="width: 75px;">
+      <mat-label>Timer</mat-label>
+      <input  matInput cdkFocusInitial autocomplete="off" [(ngModel)]="startValue" type="number" />
+    </mat-form-field>
+    <button style="margin-left: 5px;" mat-mini-fab (click)="startCountdown()">
+      <mat-icon matSuffix>timer</mat-icon>
+    </button>
+  </div>
+  <p style="font-size: 2rem;">{{ firestoreValue }}</p>
+</div>

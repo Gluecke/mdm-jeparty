@@ -28,28 +28,19 @@ export class ContestantComponent implements OnInit {
   }
 
   submit(): void {
-    const guessDocRef = doc(this.store, 'guesses', this.contestant.name); // Use doc()
+    const guessDocRef = doc(this.store, 'guesses', this.contestant.name);
 
-    const guessData: Guess = { // Type the guess data
+    const guessData: Guess = {
       contestant: this.contestant,
       showAnswer: false,
       dateSubmitted: Timestamp.fromDate(new Date())
     };
 
-    setDoc(guessDocRef, guessData).then(() => { // Use setDoc()
+    setDoc(guessDocRef, guessData).then(() => {
       this.lss.setData(this.contestant);
       console.log("Guess submitted successfully.");
     }).catch(error => {
       console.error("Error submitting guess:", error);
     });
   }
-  // submit(): void {
-  //   this.store.collection<Guess>('guesses').doc(this.contestant.name).set({
-  //     contestant: this.contestant,
-  //     showAnswer: false,
-  //     dateSubmitted: Timestamp.fromDate(new Date())
-  //   });
-
-  //   this.lss.setData(this.contestant);
-  // }
 }

@@ -18,6 +18,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { TimerComponent } from "./timer/timer.component";
 
 @Component({
   selector: 'app-root',
@@ -35,7 +36,8 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     MatToolbarModule,
     MatCardModule,
-    MatInputModule]
+    MatInputModule,
+    TimerComponent]
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'jeparty';
