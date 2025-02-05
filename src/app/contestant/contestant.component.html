@@ -1,24 +1,26 @@
 <form (ngSubmit)="submit()" #form="ngForm">
   <div class="contestant">
-    <p>
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput cdkFocusInitial autocomplete="off" [(ngModel)]="contestant.name" name="name" required/>
-        <mat-icon matSuffix>emoji_people</mat-icon>
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field>
-        <mat-label>Guess</mat-label>
-        <input matInput cdkFocusInitial autocomplete="off" [(ngModel)]="contestant.guess" name="guess" required/>
-        <mat-icon matSuffix>question_answer</mat-icon>
-        <mat-hint>Only one answer</mat-hint>
-      </mat-form-field>
-    </p>
-    <span style="float: right">
+    <div>
+      <p>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput cdkFocusInitial autocomplete="off" [(ngModel)]="contestant.name" name="name" required />
+          <mat-icon matSuffix>emoji_people</mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <mat-label>Guess</mat-label>
+          <input matInput cdkFocusInitial autocomplete="off" [(ngModel)]="contestant.guess" name="guess" required />
+          <mat-icon matSuffix>question_answer</mat-icon>
+          <mat-hint>Only one answer</mat-hint>
+        </mat-form-field>
+      </p>
+    </div>
+    <div style="text-align: right; overflow: hidden;">
       <button mat-mini-fab aria-label="Submit answer" [disabled]="!form.valid">
         <mat-icon>send</mat-icon>
       </button>
-    </span>
+    </div>
   </div>
 </form>

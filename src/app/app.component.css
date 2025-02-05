@@ -30,3 +30,14 @@
 .content {
   flex: 1;
 }
+
+:host {
+  --host-control-btn-size: 25px;
+}
+
+.host-control-btn {
+  margin: 0 !important;
+  font-size: var(--host-control-btn-size) !important;
+  height: var(--host-control-btn-size) !important;
+  width: var(--host-control-btn-size) !important;
+}

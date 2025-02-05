@@ -6,7 +6,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { provideFirebaseApp } from '@angular/fire/app';
 import { initializeApp } from 'firebase/app';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 
 if (environment.production) {
@@ -25,6 +25,7 @@ bootstrapApplication(AppComponent, {
       return firestore;
     }),
     provideAuth(() => getAuth()),
+    provideAnimations()
   ]
 })
   .catch((err) => console.error(err));
