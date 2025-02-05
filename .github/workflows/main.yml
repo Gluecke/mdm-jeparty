@@ -36,7 +36,7 @@ jobs:
           sed -i "s/{{FIREBASE_APP_ID}}/${{ secrets.FIREBASE_APP_ID }}/g" src/environments/environment.prod.ts
           sed -i "s/{{FIREBASE_MEASUREMENT_ID}}/${{ secrets.FIREBASE_MEASUREMENT_ID }}/g" src/environments/environment.prod.ts
 
-      - run: npm run build --prod
+      - run: npm run build
       - uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
