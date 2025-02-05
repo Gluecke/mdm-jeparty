@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "jeparty:build:production"
+              "buildTarget": "jeparty:build:production"
             },
             "development": {
-              "browserTarget": "jeparty:build:development"
+              "buildTarget": "jeparty:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "jeparty:build"
+            "buildTarget": "jeparty:build"
           }
         },
         "test": {
@@ -108,5 +108,8 @@
       }
     }
   },
-  "defaultProject": "jeparty"
+  "defaultProject": "jeparty",
+  "cli": {
+    "analytics": false
+  }
 }

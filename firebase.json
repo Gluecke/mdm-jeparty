@@ -35,6 +35,10 @@
     },
     "auth": {
       "port": "9099"
-    }
+    },
+    "hosting": {
+      "port": 5000
+    },
+    "singleProjectMode": true
   }
 }

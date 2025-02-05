@@ -8,28 +8,31 @@
           <div class="y-content">
             <span>Host Controls: &nbsp;</span>
             <button color="warn" (click)="toggleGuessVisibility()" mat-raised-button matTooltip="Show/Hide answers">
-              <mat-icon *ngIf="!(guessVisibility | async)?.show">visibility_off</mat-icon>
-              <mat-icon *ngIf="(guessVisibility | async)?.show">visibility</mat-icon>
+              <mat-icon class="host-control-btn" *ngIf="!(guessVisibility | async)?.show">visibility_off</mat-icon>
+              <mat-icon class="host-control-btn" *ngIf="(guessVisibility | async)?.show">visibility</mat-icon>
             </button>
-            <button color="warn" style="margin-left: 10px" (click)="newQuestion()" mat-raised-button matTooltip="Reset">
-              <mat-icon>autorenew</mat-icon>
+            <button color="warn" style="margin-left: 10px;" (click)="newQuestion()" mat-raised-button matTooltip="Reset">
+              <mat-icon class="host-control-btn">autorenew</mat-icon>
             </button>
             <div style="margin-top: 25px;">
               <app-contestant></app-contestant>
+            </div>
+            <div>
+              <app-timer></app-timer>
             </div>
           </div>
         </div>
       </div>
       <div class="x-content">
         <div class="y-content">
-          <span style="display: flex; justify-content: center;">Answers: {{guesses?.length}}
+          <span style="display: flex; justify-content: center;">Answers: {{guesses.length}}
           </span>
           <hr style="margin-bottom: 40px;" />
           <app-guess *ngFor="let guess of guesses" [guess]="guess"></app-guess>
         </div>
-        <button color="accent" style="font-size: 25px; line-height: 9px; width: 100%; min-height: auto;"
+        <button color="accent" style="font-size: 25px; width: 100%;"
           (click)="downloadAnswers()" mat-raised-button matTooltip="Download Answers">
-          <mat-icon style="font-size: inherit">file_download</mat-icon>
+          <mat-icon style="font-size: inherit; width: 25px; height: 25px;">file_download</mat-icon>
         </button>
       </div>
     </div>
