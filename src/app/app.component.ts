@@ -12,7 +12,7 @@ import { HeaderComponent } from "./header/header.component";
 import { ContestantComponent } from "./contestant/contestant.component";
 import { GuessComponent } from "./guess/guess.component";
 import { FooterComponent } from "./footer/footer.component";
-import {  MatIconModule } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { collectionData } from 'rxfire/firestore';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';

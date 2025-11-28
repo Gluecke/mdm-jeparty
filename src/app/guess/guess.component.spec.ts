@@ -8,9 +8,9 @@ describe('GuessComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GuessComponent ]
+      declarations: [GuessComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
