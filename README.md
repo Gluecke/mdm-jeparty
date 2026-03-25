@@ -1,3 +1,5 @@
+# App is deleted and replaced with svelte-kit port here https://github.com/Gluecke/mdm-jeparty-svelte
+
 # Jeparty
 
 Jeopardy question & answer app.  
